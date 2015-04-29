@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Example Fix?</title>
+  </head>
+  <body>
+
+<div id="holder" style="width: 400px; height: 400px; border: 1px solid black;">
+  Drag your file here
+</div>
+
+<script>
+  var holder = document.getElementById('holder');
+  holder.ondragover = function () {
+    return false;
+  };
+  holder.ondragleave = holder.ondragend = function () {
+    return false;
+  };
+  holder.ondrop = function (e) {
+    e.preventDefault();
+    var file = e.dataTransfer.files[0];
+    console.log('File you dragged here is', file.path);
+    return false;
+  };
+</script>
+
+
+
+  </body>
+  <script>
+    var remote = require('remote');
+    console.log(remote.require('app').getVersion());
+  </script>
+</html>
